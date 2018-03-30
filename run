@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+# compile
+browserify scripts/Main.ts -p tsify --debug -o scripts/Main.js
+
+# run (with firefox)
+firefox index.html &
+xdotool search --sync --onlyvisible --class "Firefox" windowactivate key F11
