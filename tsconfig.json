@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "rootDir": ".",
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "lib": [
+            "dom",
+            "es2015",
+            "es5",
+            "es6"
+        ]
+    }
+}
