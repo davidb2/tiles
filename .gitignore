@@ -1,7 +1,5 @@
 node_modules/
-scripts/*.js
 scripts/*.map
 static/
-*.js
-*.map
 .vscode/
+*.swp
