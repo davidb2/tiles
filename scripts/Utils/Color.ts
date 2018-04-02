@@ -66,7 +66,7 @@ export class Color {
     const numColors = 1 << (2 * k);
     
     for (let idx = 0; idx < numColors; idx++ ) {
-      yield new Color(Math.floor(0xff * (1 / numColors)), 0, 0, 0);
+      yield new Color(Math.floor(0xff * (idx / numColors)), 0, 0, 1);
     }
 
 //    let idx = 0;
