@@ -29,7 +29,7 @@ somewhere in `index.html`:
 <script type='text/javascript' src='scripts/Main.js'></script>
 ```
 
-ompile with:
+compile with:
 ```bash
 browserify scripts/Main.ts -p tsify --debug -o scripts/Main.js 
 ```
