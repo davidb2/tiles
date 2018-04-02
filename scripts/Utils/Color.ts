@@ -64,16 +64,21 @@ export class Color {
   public static *cycle(k: number) {
     console.assert(0 <= 2 * k && 2 * k <= 24);
     const numColors = 1 << (2 * k);
-    let idx = 0;
-    for (let b = 0; b < 0xff && idx < numColors; b++) {
-      for (let g = 0; g < 0xff && idx < numColors; g++) {
-        for (let r = 0; r < 0xff && idx < numColors; r++) {
-          for (let a = 0; a < 0xff && idx < numColors; a++) {
-            yield new Color(r, g, b, a);
-          }
-        }
-      }
+    
+    for (let idx = 0; idx < numColors; idx++ ) {
+      yield new Color(Math.floor(0xff * (1 / numColors)), 0, 0, 0);
     }
+
+//    let idx = 0;
+//    for (let b = 0; b < 0xff && idx < numColors; b++) {
+//      for (let g = 0; g < 0xff && idx < numColors; g++) {
+//        for (let r = 0; r < 0xff && idx < numColors; r++) {
+//          for (let a = 0; a < 0xff && idx < numColors; a++) {
+//            yield new Color(r, g, b, a);
+//          }
+//        }
+//      }
+//    }
   }
 
   public get hexString(): string {
