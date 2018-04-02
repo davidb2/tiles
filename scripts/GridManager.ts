@@ -29,7 +29,7 @@ export class GridManager {
           for (let coord of move.piece.getRelativeIndices()) {
             this.grid.grid[move.location.row + coord.row][move.location.col + coord.col] = cycle.next().value;
           }
-          this.draw();
+          this.draw(move);
           await delay(1);
         } catch (e) {
           console.log('exited loop', e);
@@ -40,20 +40,32 @@ export class GridManager {
     });
   }
 
-  private draw() {
+  private draw(move?: Move) {
     let width: number = this.canvasElement.width / (1 << this.grid.k);
     let height: number = this.canvasElement.height / (1 << this.grid.k);
-    for (let row: number = 0; row < (1 << this.grid.k); row++) {
-      for (let col: number = 0; col < (1 << this.grid.k); col++) {
-        let x: number = col * width;
-        let y: number = row * height;
-        let color: Color = this.grid.grid[row][col]; 
-        this.context.beginPath();
-        this.context.rect(x, y, width, height);
-        this.context.fillStyle = color.hexString;
-        this.context.fill();
+    if (move) {
+      for (let idx of move.piece.getRelativeIndices()) {
+        const row = move.location.row + idx.row;
+        const col = move.location.col + idx.col;
+        this.drawPiece(width, height, row, col);
+      }
+    } else {
+      for (let row: number = 0; row < (1 << this.grid.k); row++) {
+        for (let col: number = 0; col < (1 << this.grid.k); col++) {
+          this.drawPiece(width, height, row, col);
+        }
       }
     }
+  }
+
+  private drawPiece(width: number, height: number, row: number, col: number) {
+    let x: number = col * width;
+    let y: number = row * height;
+    let color: Color = this.grid.grid[row][col]; 
+    this.context.beginPath();
+    this.context.rect(x, y, width, height);
+    this.context.fillStyle = color.hexString;
+    this.context.fill();
   }
 
   get canvasElement(): HTMLCanvasElement { return this._canvasElement; }
