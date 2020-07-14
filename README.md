@@ -1,6 +1,6 @@
 # Setup Instructions
 ```bash
-npm install browserify tscify watchify typescript
+npm install browserify tsify watchify typescript
 ```
 
 `tsconfig.json`:
